@@ -1,6 +1,7 @@
 import React from 'react'
 import Pokeball from '../../assets/icons/pokeball.svg'
 import Searcher from '../../assets/icons/searcher.svg'
+import PokemonList from '../../components/PokemonList/PokemonList'
 
 const Home = () => {
   return (
@@ -12,19 +13,13 @@ const Home = () => {
         </div>
         <div>
           <input 
-          type="text"
-          placeholder='Buscar'
-           />
+            type="text"
+            placeholder='Buscar'
+          />
            <button type='submit'></button>
         </div>
       </header>
-      <div>
-        <div>
-          <p>3</p>
-          <img src={Pokeball} alt="" />
-          <p>pokemon name</p>
-        </div>
-      </div>
+      <PokemonList/>
     </div>
   )
 }

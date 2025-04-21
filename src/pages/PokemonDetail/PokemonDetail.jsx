@@ -23,9 +23,9 @@ const PokemonDetail = () => {
       <div>
         <h4>About</h4>
         <div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div>caracteristicas</div>
+          <div>caracteristicas</div>
+          <div>caracteristicas</div>
         </div>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. 
