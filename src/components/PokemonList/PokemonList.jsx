@@ -1,12 +1,13 @@
 import React from 'react'
 import Pokeball from '../../assets/icons/pokeball.svg'
+import './PokemonList.css'
 
 const PokemonList = () => {
     return (
-        <div>
-            <p>3</p>
+        <div className='container-pokemon-list'>
+            {/* <p>3</p>
             <img src={Pokeball} alt="" />
-            <p>pokemon name</p>
+            <p>pokemon name</p> */}
         </div>
     )
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import { IoMdArrowBack } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+import PokemonAbout from '../../components/PokemonDetail/components/PokemonAbout/PokemonAbout';
+import BaseStats from '../../components/PokemonDetail/components/BaseStats/BaseStats';
 
 const PokemonDetail = () => {
   return (
@@ -20,29 +22,8 @@ const PokemonDetail = () => {
         </div>
         <IoIosArrowForward />
       </div>
-      <div>
-        <h4>About</h4>
-        <div>
-          <div>caracteristicas</div>
-          <div>caracteristicas</div>
-          <div>caracteristicas</div>
-        </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Nisi, necessitatibus? Dolores dolor animi, non vitae earum 
-          veritatis ex quo, temporibus reprehenderit, qui consectetur 
-          ratione libero asperiores hic architecto perspiciatis aspernatur?
-        </p>
-        <h4>Base Stats</h4>
-        <ul>
-          <li>hp 999</li>
-          <li>hp 999</li>
-          <li>hp 999</li>
-          <li>hp 999</li>
-          <li>hp 999</li>
-          <li>hp 999</li>
-        </ul>
-      </div>
+      <PokemonAbout />
+      <BaseStats />
     </div>
   )
 }

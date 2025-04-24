@@ -1,0 +1,7 @@
+.container-pokemon-list{
+    margin: 24px 8px 4px 8px;
+    background-color: white;
+    border-radius: 8px;
+    min-height: calc(100dvh - 28px); /* 100% pantalla menos los márgenes */
+    box-sizing: border-box;
+}
