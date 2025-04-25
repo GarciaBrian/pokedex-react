@@ -58,9 +58,7 @@ body {
     font-size: 10px;
     font-weight: 400;
     line-height: 16px;
-    /* box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.20); */
-    /* gap: 8px;
-    flex: 1 0 0;   */
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.20);
 }
 
 .container-input input::placeholder{
