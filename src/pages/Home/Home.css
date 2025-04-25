@@ -41,7 +41,8 @@ body {
 }
 
 .container-input-div{
-    width: 84.85%;
+    margin-top: 20px;
+    width: 94.85%;
     position: relative;
     height: 32px;
 }
@@ -62,7 +63,6 @@ body {
 }
 
 .container-input input::placeholder{
-    /* padding-left: 30px; */
     font-family: Poppins;
     font-size: 10px;
     font-style: normal;
@@ -70,8 +70,19 @@ body {
     line-height: 16px;
 }
 
-.search-icon{
+.button-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+}
+
+.search-icon{
     color: #DC0A2D;
     width: 16px;
     left: 4%;

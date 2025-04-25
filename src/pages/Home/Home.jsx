@@ -52,15 +52,15 @@ const Home = () => {
         </div>
         <div className='container-input'>
           <div className='container-input-div'>
-            <IoIosSearch className='search-icon' />
+            <button className='button-search'>
+              <IoIosSearch className='search-icon' />
+            </button>
             {/* <IoMdClose className='close-icon' /> */}
             <input
               type="text"
               placeholder='Buscar'
             />
           </div>
-          <button type='submit' className='home-button'>
-          </button>
         </div>
       </header>
       <PokemonList pokemons={pokemons}/>
