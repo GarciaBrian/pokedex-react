@@ -1,16 +1,18 @@
 import React from 'react'
 
-const BaseStats = () => {
+
+const BaseStats = ({stats}) => {
+
     return (
         <div>
-            <h4>Base Stats</h4>
+            <h4>Estadisticas</h4>
             <ul>
-                <li>hp 999</li>
-                <li>hp 999</li>
-                <li>hp 999</li>
-                <li>hp 999</li>
-                <li>hp 999</li>
-                <li>hp 999</li>
+                {stats.map((stat, index) =>(
+                    <li key={index}>
+                        {stat.name}: {stat.value}
+                    </li>
+                ))}
+                
             </ul>
         </div>
     )

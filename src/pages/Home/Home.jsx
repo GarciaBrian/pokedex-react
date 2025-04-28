@@ -25,14 +25,6 @@ const Home = () => {
             id:details.id,
             name: details.name,
             image: details.sprites.other.home.front_default,
-            height: details.height,
-            weight: details.weight,
-            types: details.types.map(type => type.type.name),
-            abilities: details.abilities.map(a => a.ability.name),
-            stats: details.stats.map(stat => ({
-              name: stat.stat.name,
-              value: stat.base_stat
-            })),
           }
         })
       )
