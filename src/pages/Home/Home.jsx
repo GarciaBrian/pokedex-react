@@ -36,7 +36,7 @@ const Home = () => {
   }, [])
 
   return (
-    <div>
+    <div className='container-home'>
       <header className='header-home'>
         <div className='container-logo'>
           <img src={Pokeball} alt="" />
