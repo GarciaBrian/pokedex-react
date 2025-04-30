@@ -11,6 +11,15 @@ const PokemonDetail = () => {
   const [pokemonDetail, setPokemonDetail] = useState(null)
 
   const baseURL = 'https://pokeapi.co/api/v2/pokemon'
+  
+  const statAbbreviations = {
+    hp: 'HP',
+    attack: 'ATK',
+    defense: 'DEF',
+    'special-attack': 'SATK',
+    'special-defense': 'SDEF',
+    speed: 'SPD'
+  }
 
   useEffect(() => {
     const fetchPokemonDetail = async () => {
@@ -23,7 +32,7 @@ const PokemonDetail = () => {
       setPokemonDetail({
         id: data.id,
         name: data.name,
-        image: data.sprites.other.home.front_default,
+        image: data.sprites.other['official-artwork'].front_default,
         height: data.height,
         weight: data.weight,
         types: data.types.map(type => type.type.name),
@@ -45,7 +54,9 @@ const PokemonDetail = () => {
 
   return (
     <div>
-      <div style={{ backgroundColor: `var(--type-${pokemonDetail.types[0]})` }}>
+      <div 
+      className='container-pokemon-detail'
+      style={{ backgroundColor: `var(--type-${pokemonDetail.types[0]})` }}>
         <img src={Pokeball} alt="" className='img-pokeball' />
         <div className='pokemon-detail-title'>
           <IoMdArrowBack className='arrow-back-icon' />
@@ -80,8 +91,8 @@ const PokemonDetail = () => {
               </div>
               <div className='pokemon-about'>
                 {pokemonDetail.abilities.map((abilitie, index) => {
-                  return <div className='pokemon-abilites'>
-                    <span key={index}>{abilitie}</span>
+                  return <div className='pokemon-abilites' key={index}>
+                    <span>{abilitie}</span>
                   </div>
                 })}
                 <p className='pokemon-abilites-p'>Habilidades</p>
@@ -91,11 +102,15 @@ const PokemonDetail = () => {
           </div>
           <div className='container-base-stats'>
             <h4 style={{ color: `var(--type-${pokemonDetail.types[0]})` }}>Estadisticas</h4>
-            <ul>
+            <ul className='container-stats'>
               {pokemonDetail.stats.map((stat, index) => (
-                <li key={index}>
-                  <div>{stat.name}</div>
-                  <div>0{stat.value}</div>
+                <li key={index} className='container-stats-li'>
+                  <div 
+                  style={{ color: `var(--type-${pokemonDetail.types[0]})` }}
+                  className='stats-name'>
+                    {statAbbreviations[stat.name] || stat.name.toUpperCase()}
+                    </div>
+                  <div className='stats-value'>0{stat.value}</div>
                   <div className='stat-bar-container'>
                     <div
                       className='stat-bar'
