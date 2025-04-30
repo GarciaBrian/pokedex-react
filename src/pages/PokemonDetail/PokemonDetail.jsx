@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
 import Pokeball from '../../assets/icons/pokeball.svg'
 import balance from '../../assets/icons/balance.svg'
@@ -9,6 +9,7 @@ import './PokemonDetail.css'
 const PokemonDetail = () => {
   const { name } = useParams()
   const [pokemonDetail, setPokemonDetail] = useState(null)
+  const navigate = useNavigate()
 
   const baseURL = 'https://pokeapi.co/api/v2/pokemon'
   
@@ -59,7 +60,7 @@ const PokemonDetail = () => {
       style={{ backgroundColor: `var(--type-${pokemonDetail.types[0]})` }}>
         <img src={Pokeball} alt="" className='img-pokeball' />
         <div className='pokemon-detail-title'>
-          <IoMdArrowBack className='arrow-back-icon' />
+          <IoMdArrowBack className='arrow-back-icon' onClick={() => navigate(-1)}/>
           <h2>{name}</h2>
           <p>{pokemonDetail.id}</p>
         </div>
