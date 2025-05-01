@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
+import pokeballImg from '../../assets/pokeball-png.webp'
 import Pokeball from '../../assets/icons/pokeball.svg'
 import balance from '../../assets/icons/balance.svg'
 import rule from '../../assets/icons/rule.svg'
@@ -30,28 +31,35 @@ const PokemonDetail = () => {
       const speciesRes = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
       const speciesData = await speciesRes.json()
       const flavorText = speciesData.flavor_text_entries.find(entry => entry.language.name === 'es')
-      setPokemonDetail({
-        id: data.id,
-        name: data.name,
-        image: data.sprites.other['official-artwork'].front_default,
-        height: data.height,
-        weight: data.weight,
-        types: data.types.map(type => type.type.name),
-        abilities: data.abilities.map(a => a.ability.name),
-        stats: data.stats.map(stat => ({
-          name: stat.stat.name,
-          value: stat.base_stat
-        })),
-        description: flavorText ? flavorText.flavor_text : 'Sin descripción',
-        color: speciesData.color.name,
-      })
+      setTimeout(() =>{
+        setPokemonDetail({
+          id: data.id,
+          name: data.name,
+          image: data.sprites.other['official-artwork'].front_default,
+          height: data.height,
+          weight: data.weight,
+          types: data.types.map(type => type.type.name),
+          abilities: data.abilities.map(a => a.ability.name),
+          stats: data.stats.map(stat => ({
+            name: stat.stat.name,
+            value: stat.base_stat
+          })),
+          description: flavorText ? flavorText.flavor_text : 'Sin descripción',
+          color: speciesData.color.name,
+        })
+      }, 1000)
     }
     fetchPokemonDetail()
   }, [name])
 
   if (!pokemonDetail) {
-    return <p>Cargando!!!</p>
-  }
+    return (
+      <div className='container-loading'>
+        <img src={pokeballImg} alt='' className='loading-img' />
+        <img src={pokeballImg} alt='' className='loading-img' />
+        <img src={pokeballImg} alt='' className='loading-img' />
+      </div>
+  )}
 
   return (
     <div>
