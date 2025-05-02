@@ -40,16 +40,15 @@ const Home = () => {
   }, [])
 
   const handleSearch = async () => {
-    if(!searchValue) return;
+    if (!searchValue) return;
 
-    try{
+    try {
       const res = await fetch(`${baseURL}/${searchValue.toLowerCase()}`)
       if (!res.ok) {
         setfilteredPokemons([])
-        setNotFound(true)
-        return
+        throw new Error("Pokémon no encontrado")
       }
-      const details =  await res.json()
+      const details = await res.json()
 
       const result = {
         id: details.id,
@@ -59,7 +58,7 @@ const Home = () => {
 
       setfilteredPokemons([result])
       setNotFound(false)
-    } catch (error){
+    } catch (error) {
       console.error(error)
       setfilteredPokemons([])
       setNotFound(true)
@@ -73,38 +72,51 @@ const Home = () => {
   }
 
   return (
-    <div className='container-home'>
-      <header className='header-home'>
-        <div className='container-logo'>
-          <img src={Pokeball} alt="" />
-          <h1>Pokédex</h1>
-        </div>
-        <div className='container-input'>
-          <div className='container-input-div'>
-            <button
-              className='button-search'
-              onClick={handleSearch}
-            >
-              <IoIosSearch className='search-icon' />
-            </button>
-            {searchValue && (
-              <IoMdClose 
-              className='close-icon' 
-              onClick={handleClear}
-              />
-            )}
-            <input
-              type="text"
-              placeholder='Buscar'
-              value={searchValue}
-              onChange={(e) => setsearchValue(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-            />
+    <>
+      {notFound && (
+        <div className="container-message-error" onClick={() => setNotFound(false)}>
+          <div className="message-error">
+            <p>No se encontro al Pokémon, por favor intente nuevamente</p>
+            <IoMdClose
+                  className='close-icon-message'
+                  onClick={() => setNotFound(false)}
+                />
           </div>
         </div>
-      </header>
-        <PokemonList pokemons={filteredPokemons.length ? filteredPokemons : pokemons} notFound={notFound}/>
-    </div>
+      )}
+      <div className='container-home'>
+        <header className='header-home'>
+          <div className='container-logo'>
+            <img src={Pokeball} alt="" />
+            <h1>Pokédex</h1>
+          </div>
+          <div className='container-input'>
+            <div className='container-input-div'>
+              <button
+                className='button-search'
+                onClick={handleSearch}
+              >
+                <IoIosSearch className='search-icon' />
+              </button>
+              {searchValue && (
+                <IoMdClose
+                  className='close-icon'
+                  onClick={handleClear}
+                />
+              )}
+              <input
+                type="text"
+                placeholder='Buscar'
+                value={searchValue}
+                onChange={(e) => setsearchValue(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+              />
+            </div>
+          </div>
+        </header>
+        <PokemonList pokemons={filteredPokemons.length ? filteredPokemons : pokemons} />
+      </div>
+    </>
   )
 }
 

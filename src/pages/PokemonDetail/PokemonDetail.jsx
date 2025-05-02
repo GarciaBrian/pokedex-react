@@ -70,7 +70,7 @@ const PokemonDetail = () => {
         <div className='pokemon-detail-title'>
           <IoMdArrowBack className='arrow-back-icon' onClick={() => navigate(-1)}/>
           <h2>{name}</h2>
-          <p>{pokemonDetail.id}</p>
+          <p>#{String(pokemonDetail.id).padStart(3, '0')}</p>
         </div>
         <div className='pokemon-detail-img'>
           <img src={pokemonDetail.image} alt={name} />
