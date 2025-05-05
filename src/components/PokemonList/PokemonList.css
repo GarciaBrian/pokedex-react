@@ -65,3 +65,16 @@
     line-height: 16px;
     margin-top: 10px;
 }
+
+@media(min-width: 768px){
+    .container-pokemon-card{
+        margin: 0 auto;
+        width: 87%;
+        gap: 15px;
+        padding-top: 34px;
+    }
+    .pokemon-card{
+        width: 135px;
+        height: 139px;
+    }
+}
