@@ -62,6 +62,10 @@ const Home = () => {
       console.error(error)
       setfilteredPokemons([])
       setNotFound(true)
+
+      // setTimeout(() =>{
+      //   setNotFound(false)
+      // }, 2500)
     }
   }
 

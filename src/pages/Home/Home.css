@@ -4,8 +4,15 @@
     box-sizing: border-box;
 }
 
+html, body{
+    height: 100%;
+}
+
 .container-home{
     background-color: #DC0A2D;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -93,7 +100,7 @@
     position: absolute;
     color: #DC0A2D;
     width: 16px;
-    right: 4%;
+    right: 2%;
     top: 8px;
 }
 
@@ -153,3 +160,61 @@
     100% { opacity: 1; transform: translateX(-50%) translateY(0px); }
 }
 
+@media(min-width: 1024px){
+    .container-input-div{
+        width: 85%;
+        margin-top: 10px;
+    }
+
+    .container-logo img{
+        width: 30px;
+    }
+
+    .container-logo h1{
+        font-size: 30px;
+        line-height: 47px;
+    }
+
+    .container-input input{
+        height: 40px;
+        padding-left: 40px;
+        font-size: 13px;
+    }
+
+    .container-input input::placeholder{
+        font-size: 13px;
+    }
+
+    .button-search{
+        width: 39px;
+        height: 40px;
+    }
+
+    .search-icon{
+        width: 23px;
+        font-size: 20px;
+        left: 4%;
+    }
+    
+    .close-icon{
+        width: 40px;
+        font-size: 23px;
+        right: 1px;
+    }
+
+    .message-error{
+        width: 200px;
+        height: 140px;
+        padding: 30px;
+    }
+    
+    .message-error p{
+        font-size: 13px;
+    }
+}
+
+@media(min-width: 1440px){
+    .container-input-div{
+        width: 75%;
+    }
+}

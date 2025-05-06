@@ -15,7 +15,13 @@ const PokemonList = ({ pokemons }) => {
                         className='pokemon-card'
                     >
                         <span>#{String(pokemon.id).padStart(3, '0')}</span>
-                        <img src={pokemon.image} alt={pokemon.name} />
+                        <img src={pokemon.image} 
+                        alt={pokemon.name}
+                        onError={(e) => {
+                            e.target.onerror = null; 
+                            e.target.src = pokemonDefault;
+                          }} 
+                        />
                         <p>{pokemon.name}</p>
                     </Link>
                 ))}
