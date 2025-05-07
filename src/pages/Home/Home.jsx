@@ -63,9 +63,9 @@ const Home = () => {
       setfilteredPokemons([])
       setNotFound(true)
 
-      // setTimeout(() =>{
-      //   setNotFound(false)
-      // }, 2500)
+      setTimeout(() =>{
+        setNotFound(false)
+      }, 2500)
     }
   }
 
