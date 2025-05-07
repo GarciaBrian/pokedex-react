@@ -110,7 +110,7 @@ const PokemonDetail = () => {
                       <span>{abilitie}</span>
                     </div>
                   })}
-                  <p className='pokemon-abilites-p'>Habilidades</p>
+                  <p className='pokemon-abilites-p'>Movimientos</p>
                 </div>
               </div>
               <p className='pokemon-about-description'>{pokemonDetail.description}</p>

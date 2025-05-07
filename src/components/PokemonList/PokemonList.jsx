@@ -1,8 +1,7 @@
 import React from 'react'
-import Pokeball from '../../assets/icons/pokeball.svg'
+import PokeballGray from '../../assets/icons/pokeball-gray.svg'
 import './PokemonList.css'
 import { Link } from 'react-router-dom'
-import pokemonDefault from '../../assets/icons/pokemon-default.svg'
 
 const PokemonList = ({ pokemons }) => {
     return (
@@ -19,7 +18,7 @@ const PokemonList = ({ pokemons }) => {
                         alt={pokemon.name}
                         onError={(e) => {
                             e.target.onerror = null; 
-                            e.target.src = pokemonDefault;
+                            e.target.src = PokeballGray;
                           }} 
                         />
                         <p>{pokemon.name}</p>
