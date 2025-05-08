@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from 'react'
 import Pokeball from '../../assets/icons/pokeball.svg'
-import Searcher from '../../assets/icons/searcher.svg'
 import PokemonList from '../../components/PokemonList/PokemonList'
 import { IoIosSearch } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
@@ -17,23 +16,32 @@ const Home = () => {
   const baseURL = 'https://pokeapi.co/api/v2/pokemon'
 
   useEffect(() => {
+
     const fetchPokemons = async () => {
-      const res = await fetch(`${baseURL}?limit=12`)
-      const data = await res.json()
-      const detailedPokemons = await Promise.all(
-        data.results.map(async (pokemon) => {
+      try {
+        const res = await fetch(`${baseURL}?limit=12`)
+        const data = await res.json()
+
+        const detailedPokemons = []
+
+        for (let i = 0; i < data.results.length; i++) {
+          const pokemon = data.results[i]
+
           const res = await fetch(pokemon.url)
           const details = await res.json()
 
-          return {
+          detailedPokemons.push({
             id: details.id,
             name: details.name,
             image: details.sprites.other['official-artwork'].front_default,
-          }
-        })
-      )
+          })
 
-      setPokemons(detailedPokemons)
+        }
+
+        setPokemons(detailedPokemons)
+      } catch (error) {
+        console.error('Error cargando pokemons:', error)
+      }
     }
 
     fetchPokemons()
@@ -63,7 +71,7 @@ const Home = () => {
       setfilteredPokemons([])
       setNotFound(true)
 
-      setTimeout(() =>{
+      setTimeout(() => {
         setNotFound(false)
       }, 2500)
     }
@@ -82,9 +90,9 @@ const Home = () => {
           <div className="message-error">
             <p>No se encontro al Pokémon, por favor intente nuevamente</p>
             <IoMdClose
-                  className='close-icon-message'
-                  onClick={() => setNotFound(false)}
-                />
+              className='close-icon-message'
+              onClick={() => setNotFound(false)}
+            />
           </div>
         </div>
       )}

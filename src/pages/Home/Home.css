@@ -77,6 +77,12 @@ html, body{
     line-height: 16px;
 }
 
+.container-input input:focus{
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
 .button-search{
     display: flex;
     justify-content: center;
