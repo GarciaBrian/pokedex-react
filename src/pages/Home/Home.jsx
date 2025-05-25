@@ -22,21 +22,18 @@ const Home = () => {
         const res = await fetch(`${baseURL}?limit=12`)
         const data = await res.json()
 
-        const detailedPokemons = []
+        const detailedPokemons = await Promise.all(
+          data.results.map(async (pokemon) => {
+            const res = await fetch(pokemon.url);
+            const details = await res.json();
 
-        for (let i = 0; i < data.results.length; i++) {
-          const pokemon = data.results[i]
-
-          const res = await fetch(pokemon.url)
-          const details = await res.json()
-
-          detailedPokemons.push({
-            id: details.id,
-            name: details.name,
-            image: details.sprites.other['official-artwork'].front_default,
+            return {
+              id: details.id,
+              name: details.name,
+              image: details.sprites.other['official-artwork'].front_default,
+            }
           })
-
-        }
+        )
 
         setPokemons(detailedPokemons)
       } catch (error) {
